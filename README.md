@@ -1,5 +1,7 @@
 # custom-directives
-
+* Values    = `v-directive=value`
+* Arguments = `v-directive:argument=value`
+* Modifiers = `v-directive:argument.modifier = value`
 ## Project setup
 ```
 npm install

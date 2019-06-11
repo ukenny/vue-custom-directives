@@ -1,17 +1,41 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <h1>Test</h1>
+    <button v-custom-on:click="clicked">Click Me!</button>
+    <div
+      v-custom-on:mouseenter="boxEntered"
+      v-custom-on:mouseleave="boxLeft"
+      style="width: 100px; height: 100px; background-color: lightgreen"
+    >
+      Enter this box!
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
-
 export default {
   name: "app",
-  components: {
-    HelloWorld
+  directives: {
+    customOn: {
+      bind(el, binding) {
+        // el.onclick = function() {
+        //   binding.value();
+        // };
+        const type = binding.arg;
+        el.addEventListener(type, binding.value);
+      }
+    }
+  },
+  methods: {
+    clicked() {
+      alert("I was clicked!");
+    },
+    boxEntered() {
+      alert("Mouse is in green box!");
+    },
+    boxLeft() {
+      console.log("Mouse left green box!");
+    }
   }
 };
 </script>
